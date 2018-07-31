@@ -18,10 +18,17 @@ class Api::ArticlesController < ApplicationController
       render json: [message: "not logged in..."]
     end  
   end
-
+  
   # may not need this along with route
   def read
-    @article = Article.where(category_id: 1)
-    render "show.json.jbuilder"
+    @history = History.where(user_id: current_user)
+    # render json: [message: "went through"]
+    render "history.json.jbuilder"
   end
+
+
+  # test route. remove when deploying
+
+  # def test
+  #   @stories = 
 end
