@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
     get "/articles" => "articles#index"
     get "/categories" => "categories#index"
+    get "/read" => "articles#read"
 
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
