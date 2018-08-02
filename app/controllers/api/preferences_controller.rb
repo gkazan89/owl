@@ -11,4 +11,12 @@ class Api::PreferencesController < ApplicationController
     @pref.save
     render "show.json.jbuilder"
   end
+
+  def update
+    @pref = Preference.find_by(id: params[:id])
+    @pref.user_id = params[:user_id] || @pref.user_id
+    @pref.category_id = params[:category_id] || @pref.category_id
+    @pref.save
+    render "show.json.jbuilder"
+  end
 end

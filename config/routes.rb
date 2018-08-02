@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     get "/preferences" => "preferences#index"
 
     post "/preferences" => "preferences#create"
+
+    patch "/preferences/:id" => "preferences#update"
   end
 end
