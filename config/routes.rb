@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     post "/sessions" => "sessions#create"
 
     get "/histories" => "histories#index"
+
+    get "/preferences" => "preferences#index"
+
+    post "/preferences" => "preferences#create"
   end
 end
