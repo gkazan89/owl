@@ -3,7 +3,7 @@ class Api::HistoriesController < ApplicationController
   
   def index
     @stories = current_user.histories.where(status: "unread")
-    render "histories.json.jbuilder"
+    render "histories.json.jbuilder" 
   end
 
 end
