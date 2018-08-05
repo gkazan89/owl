@@ -1,6 +1,7 @@
 class Api::ArticlesController < ApplicationController
   before_action :authenticate_user
 
+# This is a good bit!
   def index
     @articles = []
     @types = []
@@ -14,7 +15,7 @@ class Api::ArticlesController < ApplicationController
       link = response.body["response"]["results"][0]["apiUrl"] 
       link += "?show-blocks=all&api-key=#{ENV["API_KEY"]}"
       article = Unirest.get(link)
-      @articles << article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
+      @articles << {type: type, body: article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]}
     end
     render json: @articles
   end
