@@ -1,6 +1,7 @@
 class Api::PreferencesController < ApplicationController
   def index
-    render json: {message: "Went through"}
+    @preferences = Preference.all
+    render "index.json.jbuilder"
   end
 
   def create
