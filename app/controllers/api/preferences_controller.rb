@@ -5,13 +5,14 @@ class Api::PreferencesController < ApplicationController
 
   def create
     @pref = Preference.new(
-      user_id: params[:user_id],
+      user_id: current_user.id,
       category_id: params[:category_id],
       )
     @pref.save
     render "show.json.jbuilder"
   end
 
+  # may not need this action below:
   def update
     @pref = Preference.find_by(id: params[:id])
     @pref.user_id = params[:user_id] || @pref.user_id
