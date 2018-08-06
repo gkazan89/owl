@@ -13,9 +13,15 @@ class Api::ArticlesController < ApplicationController
       response = Unirest.get(
         "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
       link = response.body["response"]["results"][0]["apiUrl"] 
-      link += "?show-blocks=all&api-key=#{ENV["API_KEY"]}"
+      link += "?show-blocks=all&show-tags=contributor&api-key=#{ENV["API_KEY"]}"
       article = Unirest.get(link)
-      @articles << {type: type, body: article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]}
+      @articles << 
+      {
+        title: article.body["response"]["content"]["webTitle"], 
+        category: type, 
+        author: article.body["response"]["content"]["tags"][0]["webTitle"],
+        body: article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
+      }
     end
     render json: @articles
   end
