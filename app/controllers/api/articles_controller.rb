@@ -15,12 +15,19 @@ class Api::ArticlesController < ApplicationController
       link = response.body["response"]["results"][0]["apiUrl"] 
       link += "?show-blocks=all&show-tags=contributor&api-key=#{ENV["API_KEY"]}"
       article = Unirest.get(link)
+      article_title = article.body["response"]["content"]["webTitle"]
+      article_body = article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
+      if article.body["response"]["content"]["tags"][0]
+        article_author = article.body["response"]["content"]["tags"][0]["webTitle"]
+      else
+        article_author = "No author"
+      end
       @articles << 
       {
-        title: article.body["response"]["content"]["webTitle"], 
+        title: article_title, 
         category: type, 
-        author: article.body["response"]["content"]["tags"][0]["webTitle"],
-        body: article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
+        author: article_author,
+        body: article_body
       }
     end
     render json: @articles
