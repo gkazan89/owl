@@ -12,7 +12,10 @@ class Api::ArticlesController < ApplicationController
     @types.each do |type|
       response = Unirest.get(
         "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
-      link = response.body["response"]["results"][0]["apiUrl"] 
+
+      # link = response.body["response"]["results"][0]["apiUrl"] 
+      link = get_unread_article_url(response.body["response"]["results"])
+      
       link += "?show-blocks=all&show-tags=contributor&api-key=#{ENV["API_KEY"]}"
       article = Unirest.get(link)
       article_title = article.body["response"]["content"]["webTitle"]
@@ -20,7 +23,7 @@ class Api::ArticlesController < ApplicationController
       if article.body["response"]["content"]["tags"][0]
         article_author = article.body["response"]["content"]["tags"][0]["webTitle"]
       else
-        article_author = "No author"
+        article_author = "No author available"
       end
       @articles << 
       {
@@ -43,5 +46,14 @@ class Api::ArticlesController < ApplicationController
       @blank << article.category.name
     end
     render json: @blank
+  end
+
+  def get_unread_article_url(results)
+    # loop through results (results.each do |result|)
+    # if result["id"] is NOT in History.all
+    #   save the result["id"] into the History data
+    #   return result["apiUrl"]
+    # if you hit the end of the loop, return nil ?
+    results[0]["apiUrl"]
   end
 end
