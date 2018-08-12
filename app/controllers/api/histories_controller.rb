@@ -3,10 +3,8 @@ class Api::HistoriesController < ApplicationController
   
   def index
     @stories = current_user.histories.where(status: "unread")
-    render "histories.json.jbuilder" 
+    render "histories.json.jbuilder"
   end
-
-
 
   def create
     @articles = []
@@ -30,7 +28,14 @@ class Api::HistoriesController < ApplicationController
         )
       link.save
     end
-    render json: "went through"
+    render json: "success!"
+  end
+
+  def test
+    @history = History.find_by(id: params[:id])
+    @history.status = "read"
+    @history.save
+    render "show.json.jbuilder"
   end
 
 end

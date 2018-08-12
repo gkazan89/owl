@@ -1,5 +1,4 @@
 json.array! @stories.each do |story|
-  json.article story.article.headline
-  json.link story.article.link
+  json.article story.api_url
   json.status story.status
 end
