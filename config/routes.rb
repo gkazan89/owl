@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
 
+    get "/histories/test" => "histories#get_api_url"
     get "/histories" => "histories#index"
     post "/histories" => "histories#create"
 
