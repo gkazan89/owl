@@ -22,7 +22,7 @@ class Api::HistoriesController < ApplicationController
     end
     @articles.each do |story|
       link = History.new(
-        status: "unread",
+        status: "read",
         user_id: current_user.id,
         api_url: story,
         )
