@@ -186,93 +186,100 @@
 #   end
 # end
 
-
-article= {"response": {
-"status": "ok",
-"userTier": "developer",
-"total": 1,
-"content": {
-"id": "world/2018/jul/22/it-hits-you-very-quickly-canada-brews-first-cannabis-beer",
-"type": "article",
-"sectionId": "world",
-"sectionName": "World news",
-"webPublicationDate": "2018-07-22T11:41:55Z",
-"webTitle": "'It hits you very quickly': Canada brews first cannabis beer",
-"webUrl": "https://www.theguardian.com/world/2018/jul/22/it-hits-you-very-quickly-canada-brews-first-cannabis-beer",
-"apiUrl": "https://content.guardianapis.com/world/2018/jul/22/it-hits-you-very-quickly-canada-brews-first-cannabis-beer",
-"blocks": {
-"main": {
-"id": "5b547616e4b0b9a0a347ee06",
-"bodyHtml": "<figure class=\"element element-image\" data-media-id=\"bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378\"> <img src=\"https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/500.jpg\" alt=\"Province Brands\" width=\"500\" height=\"300\" class=\"gu-image\" /> <figcaption> <span class=\"element-image__caption\">The logo of Province Brands, the startup behind the new beer. </span> <span class=\"element-image__credit\">Photograph: Province Brands</span> </figcaption> </figure>",
-"bodyTextSummary": "",
-"attributes": {},
-"published": true,
-"createdDate": "2018-07-22T12:18:30Z",
-"firstPublishedDate": "2018-07-22T11:38:58Z",
-"publishedDate": "2018-07-22T12:19:00Z",
-"lastModifiedDate": "2018-07-22T12:18:57Z",
-"contributors": [],
-"elements": [
-{
-"type": "image",
-"assets": [
-{
-"type": "image",
-"mimeType": "image/jpeg",
-"file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/500.jpg",
-"typeData": {
-"aspectRatio": "5:3",
-"width": 500,
-"height": 300
+article = 
+  { "response": 
+    {
+      "status": "ok",
+      "userTier": "developer",
+      "total": 1,
+      "content": 
+      {
+        "id": "world/2018/jul/22/it-hits-you-very-quickly-canada-brews-first-cannabis-beer",
+        "type": "article",
+        "sectionId": "world",
+        "sectionName": "World news",
+        "webPublicationDate": "2018-07-22T11:41:55Z",
+        "webTitle": "'It hits you very quickly': Canada brews first cannabis beer",
+        "webUrl": "https://www.theguardian.com/world/2018/jul/22/it-hits-you-very-quickly-canada-brews-first-cannabis-beer",
+        "apiUrl": "https://content.guardianapis.com/world/2018/jul/22/it-hits-you-very-quickly-canada-brews-first-cannabis-beer",
+        "blocks": 
+        {
+          "main": 
+          {
+            "id": "5b547616e4b0b9a0a347ee06",
+            "bodyHtml": "<figure class=\"element element-image\" data-media-id=\"bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378\"> <img src=\"https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/500.jpg\" alt=\"Province Brands\" width=\"500\" height=\"300\" class=\"gu-image\" /> <figcaption> <span class=\"element-image__caption\">The logo of Province Brands, the startup behind the new beer. </span> <span class=\"element-image__credit\">Photograph: Province Brands</span> </figcaption> </figure>",
+            "bodyTextSummary": "",
+            "attributes": {},
+            "published": true,
+            "createdDate": "2018-07-22T12:18:30Z",
+            "firstPublishedDate": "2018-07-22T11:38:58Z",
+            "publishedDate": "2018-07-22T12:19:00Z",
+            "lastModifiedDate": "2018-07-22T12:18:57Z",
+            "contributors": [],
+            "elements": 
+            [
+              {
+              "type": "image",
+              "assets": [
+                {
+                "type": "image",
+                "mimeType": "image/jpeg",
+                "file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/500.jpg",
+                "typeData": {
+                  "aspectRatio": "5:3",
+                  "width": 500,
+                  "height": 300
+                  }
+                },
+                {
+                  "type": "image",
+                  "mimeType": "image/jpeg",
+                  "file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/140.jpg",
+                  "typeData": {
+                    "aspectRatio": "5:3",
+                    "width": 140,
+                    "height": 84
+                  }
+                },
+                {
+                  "type": "image",
+                  "mimeType": "image/jpeg",
+                  "file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/599.jpg",
+                  "typeData": {
+                    "aspectRatio": "5:3",
+                    "width": 599,
+                    "height": 359
+                  }
+                },
+                {
+                  "type": "image",
+                  "mimeType": "image/jpeg",
+                  "file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/master/599.jpg",
+                  "typeData": {
+                    "aspectRatio": "5:3",
+                    "width": 599,
+                    "height": 359,
+                    "isMaster": true
+                  }
+                }
+            ],
+            "imageTypeData": {
+              "caption": "The logo of Province Brands, the startup behind the new beer. ",
+              "displayCredit": true,
+              "credit": "Photograph: Province Brands",
+              "source": "Province Brands",
+              "alt": "Province Brands",
+              "mediaId": "bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378",
+              "mediaApiUri": "https://api.media.gutools.co.uk/images/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378",
+              "imageType": "Photograph"
+            }  
+          }
+        ]
+      }
+    }
+  }
 }
-},
-{
-"type": "image",
-"mimeType": "image/jpeg",
-"file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/140.jpg",
-"typeData": {
-"aspectRatio": "5:3",
-"width": 140,
-"height": 84
 }
-},
-{
-"type": "image",
-"mimeType": "image/jpeg",
-"file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/599.jpg",
-"typeData": {
-"aspectRatio": "5:3",
-"width": 599,
-"height": 359
-}
-},
-{
-"type": "image",
-"mimeType": "image/jpeg",
-"file": "https://media.guim.co.uk/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378/8_34_599_359/master/599.jpg",
-"typeData": {
-"aspectRatio": "5:3",
-"width": 599,
-"height": 359,
-"isMaster": true
-}
-}
-],
-"imageTypeData": {
-"caption": "The logo of Province Brands, the startup behind the new beer. ",
-"displayCredit": true,
-"credit": "Photograph: Province Brands",
-"source": "Province Brands",
-"alt": "Province Brands",
-"mediaId": "bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378",
-"mediaApiUri": "https://api.media.gutools.co.uk/images/bb4510f1fcb3e5605b93db9d6a90d9c9ff78c378",
-"imageType": "Photograph"
-}
-}
-]
-}},
-
 # get master image, looks like it's always the last element in image array
-pic = article["response"]["content"]["blocks"]["main"]["elements"][0]["assets"]
-
-p pic["file"]
+pic = article[:response][:content][:blocks][:main][:elements][0][:assets].pop
+p pic[:file]

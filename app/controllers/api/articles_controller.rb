@@ -19,7 +19,7 @@ class Api::ArticlesController < ApplicationController
       article = Unirest.get(link)
       article_title = article.body["response"]["content"]["webTitle"]
       pic = article.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"].pop
-      article_image = pic[:file]
+      article_image = pic["file"]
       article_body = article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
       if article.body["response"]["content"]["tags"][0]
         article_author = article.body["response"]["content"]["tags"][0]["webTitle"]
@@ -29,7 +29,7 @@ class Api::ArticlesController < ApplicationController
 
       @articles << {
         title: article_title, 
-        image: article_image,
+        master_image: article_image,
         category: type, 
         author: article_author,
         body: article_body
