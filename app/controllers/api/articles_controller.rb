@@ -36,6 +36,12 @@ class Api::ArticlesController < ApplicationController
     render json: @articles
   end
 
+
+  # a single page web app that shows the three unread articles
+  # user presses a button to read the article and the "next" button
+  # spits out the next one they have yet to read
+
+  
   def get_unread_article_url(results)
     # loop through results (results.each do |result|)
     # if result["id"] is NOT in History.all

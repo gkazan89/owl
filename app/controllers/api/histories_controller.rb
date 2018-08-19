@@ -1,11 +1,13 @@
 class Api::HistoriesController < ApplicationController
   before_action :authenticate_user
   
+# view unread articles
   def index
     @stories = current_user.histories.where(status: "unread")
     render "histories.json.jbuilder"
   end
 
+# adds 3 articles to db with status unread
   def create
     @articles = []
     @types = []
@@ -22,7 +24,7 @@ class Api::HistoriesController < ApplicationController
     end
     @articles.each do |story|
       link = History.new(
-        status: "read",
+        status: "unread",
         user_id: current_user.id,
         api_url: story,
         )
@@ -32,10 +34,8 @@ class Api::HistoriesController < ApplicationController
   end
 
   def test
-    @history = History.find_by(id: params[:id])
-    @history.status = "read"
-    @history.save
-    render "show.json.jbuilder"
+    @stories = current_user.histories
+    render "histories.json.jbuilder"
   end
 
 end
