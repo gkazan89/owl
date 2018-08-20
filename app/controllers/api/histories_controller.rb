@@ -2,13 +2,19 @@ class Api::HistoriesController < ApplicationController
   before_action :authenticate_user
   
 # view unread articles and change to read
+# happy/sad path
   def index
     @stories = current_user.histories.where(status: "unread")
-    @stories.each do |story|
-      story.status = "read"
-      story.save
+    if @stories.length > 1
+      @stories.each do |story|
+        story.status = "read"
+        story.save
+        render "histories.json.jbuilder"
+        break
+      end
+    else
+      render json: {message: "no articles available"}
     end
-    render "histories.json.jbuilder"
   end
 
 # adds 3 articles to db with status unread
