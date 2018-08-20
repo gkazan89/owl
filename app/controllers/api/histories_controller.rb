@@ -1,13 +1,18 @@
 class Api::HistoriesController < ApplicationController
   before_action :authenticate_user
   
-# view unread articles
+# view unread articles and change to read
   def index
     @stories = current_user.histories.where(status: "unread")
+    @stories.each do |story|
+      story.status = "read"
+      story.save
+    end
     render "histories.json.jbuilder"
   end
 
 # adds 3 articles to db with status unread
+# need to check if article is already there
   def create
     @articles = []
     @types = []
