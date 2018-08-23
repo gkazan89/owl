@@ -1,4 +1,4 @@
 json.array! @preferences.each do |pref|
-  json.user_id pref.user_id
-  json.category_id pref.category_id
+  json.user_email pref.user.email
+  json.category pref.category.name
 end

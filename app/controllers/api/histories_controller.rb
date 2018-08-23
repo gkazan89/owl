@@ -44,9 +44,40 @@ class Api::HistoriesController < ApplicationController
     render json: "success!"
   end
 
+  # checking histories for unread articles 
+  # moving to next item in categories JSON if article is already in db
+  # there's probably a sorting algorithm or something we can use to do 
+  # the search efficiently
   def test
-    @stories = current_user.histories
-    render "histories.json.jbuilder"
-  end
+    @articles = []
+    @types = []
+    @preferences = current_user.preferences.all
+    @preferences.each do |pref|
+      @types << pref.category.name
+    end
+    num = 0
+    # get three new articles
+    @types.each do |type|
+      response = Unirest.get(
+        "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}"
+        )
+      link = response.body["response"]["results"][num]["apiUrl"]
+      @articles << link
+    end
+    check = current_user.histories.all
+    blank = []
+    check.each do |url|
+      blank << url.api_url
+    end
+    @articles.each do |story|
 
+    end
+      # link = History.new(
+      #   status: "unread",
+      #   user_id: current_user.id,
+      #   api_url: story,
+      #   )
+      # link.save
+    # render json: "success!"
+  end
 end

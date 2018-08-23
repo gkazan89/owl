@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
 
-    get "/histories/test/:id" => "histories#test"
+    post "/histories/test" => "histories#test"
     get "/histories" => "histories#index"
     post "/histories" => "histories#create"
 

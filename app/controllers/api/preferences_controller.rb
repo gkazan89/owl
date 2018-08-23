@@ -1,6 +1,8 @@
 class Api::PreferencesController < ApplicationController
+  before_action :authenticate_user
+
   def index
-    @preferences = Preference.all
+    @preferences = current_user.preferences.all
     render "index.json.jbuilder"
   end
 
