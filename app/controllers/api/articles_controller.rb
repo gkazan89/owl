@@ -56,9 +56,45 @@ class Api::ArticlesController < ApplicationController
   end
 
 
-  def read
-    @stories = current_user.histories.where(status: "unread")
-    render "histories.json.jbuilder"
+  def test
+    @articles = []
+    @types = []
+    @preferences = Category.all
+    @preferences.each do |pref|
+      @types << pref.name
+    end
+    @types.each do |type|
+      response = Unirest.get(
+        "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
+      link = response.body["response"]["results"][0]["apiUrl"] 
+      link += "?show-blocks=all&show-tags=contributor&api-key=#{ENV["API_KEY"]}"
+      article = Unirest.get(link)
+      article_title = article.body["response"]["content"]["webTitle"]
+      # pic = article.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"].pop
+      # article_image = pic["file"]
+      # article_body = article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
+      if article.body["response"]["content"]["tags"][0]
+        article_author = article.body["response"]["content"]["tags"][0]["webTitle"]
+      else
+        article_author = "No author available"
+      end
+
+      @articles << {
+        title: article_title, 
+        # master_image: article_image,
+        category: type, 
+        author: article_author,
+        # body: article_body
+      }
+      # save the article in History as unread
+      # History.create(article_url: ..., status: "unread")
+    end
+    render json: @articles
   end
+
+
+  # a single page web app that shows the three unread articles
+  # user presses a button to read the article and the "next" button
+  # spits out the next one they have yet to read
 
 end

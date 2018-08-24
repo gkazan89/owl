@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   namespace :api do
 
     get "/articles" => "articles#index"
-    get "/categories" => "categories#index"
     get "/read" => "articles#read"
+    get "/test" => "articles#test"
+
+    get "/categories" => "categories#index"
 
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
@@ -14,9 +16,7 @@ Rails.application.routes.draw do
     post "/histories" => "histories#create"
 
     get "/preferences" => "preferences#index"
-
     post "/preferences" => "preferences#create"
-
     patch "/preferences/:id" => "preferences#update"
   end
 end
