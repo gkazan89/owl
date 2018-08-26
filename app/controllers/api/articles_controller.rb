@@ -105,34 +105,34 @@ class Api::ArticlesController < ApplicationController
     @types.each do |type|
       response = Unirest.get(
         "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
-      link1 = response.body["response"]["results"][0]["apiUrl"] 
-      link1 += key
-      article = Unirest.get(link1)
-      article_title = article.body["response"]["content"]["webTitle"]
-      # pic = article.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"].pop
-      # article_image = pic["file"]
-      # article_body = article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
-      if article.body["response"]["content"]["tags"][0]
-        article_author = article.body["response"]["content"]["tags"][0]["webTitle"]
-      else
-        article_author = "No author available"
-      end
-      api_url = article.body["response"]["content"]["tags"][0]["apiUrl"]
+      results = response.body["response"]["results"]
+      @articles << type
+      @articles << results
+      # link1 += key
+      # article = Unirest.get(link1)
+      # article_title = article.body["response"]["content"]["webTitle"]
+      # # pic = article.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"].pop
+      # # article_image = pic["file"]
+      # # article_body = article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
+      # if article.body["response"]["content"]["tags"][0]
+      #   article_author = article.body["response"]["content"]["tags"][0]["webTitle"]
+      # else
+      #   article_author = "No author available"
+      # end
+      # api_url = article.body["response"]["content"]["tags"][0]["apiUrl"]
+      # link2 = response.body["response"]["results"][1]["apiUrl"]
+      # link2title = response.body["response"]["results"][1]["webTitle"]
 
-      ## article 2
-      response2 = Unirest.get(
-        "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}") 
-      link2 = response.body["response"]["results"][1]["apiUrl"]
-
-      @articles << {
-        title: article_title, 
-        # master_image: article_image,
-        category: type, 
-        author: article_author,
-        READ_THIS_apiUrl: link1,
-        next_api_up: link2
-        # body: article_body
-      }
+      # @articles << {
+      #   title: article_title, 
+      #   # master_image: article_image,
+      #   category: type, 
+      #   author: article_author,
+      #   READ_THIS_apiUrl: link1,
+      #   next_api_up: link2,
+      #   next_title_up: link2title
+      #   # body: article_body
+      # }
       # save the article in History as unread
       # History.create(article_url: ..., status: "unread")
     end
