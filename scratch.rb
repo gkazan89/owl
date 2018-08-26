@@ -61,86 +61,6 @@
 
 # this is the histories index
 
-news = [
-  {
-    "article": "link1",
-    "status": "read"
-  },
-  {
-    "article": "link8",
-    "status": "unread"
-  },
-  {
-    "article": "link9",
-    "status": "unread"
-  },
-  {
-    "article": "https://content.guardianapis.com/technology/2018/aug/12/youtubers-feeling-burn-video-stars-crumbling-under-pressure-of-producing-new-content",
-    "status": "unread"
-  },
-  {
-    "article": "https://content.guardianapis.com/music/2018/aug/12/west-side-story-review-white-hot-fusion-of-pop-and-classical",
-    "status": "unread"
-  },
-  {
-    "article": "link4",
-    "status": "read"
-  },
-  {
-    "article": "link6",
-    "status": "read"
-  },
-  {
-    "article": "link8",
-    "status": "read"
-  },
-  {
-    "article": "https://content.guardianapis.com/technology/2018/aug/15/facebook-myanmar-rohingya-hate-speech-investigation",
-    "status": "read"
-  },
-  {
-    "article": "https://content.guardianapis.com/music/2018/aug/15/aretha-franklin-seriously-ill-stevie-wonder-jesse-jackson",
-    "status": "read"
-  },
-  {
-    "article": "https://content.guardianapis.com/travel/2018/aug/15/uk-best-fish-and-chips-foodie-bucket-list-lonely-planet-bay-stonehaven",
-    "status": "read"
-  },
-  {
-    "article": "https://content.guardianapis.com/travel/2018/aug/12/homage-food-and-drink-catalonia-ebro-ebre-delta-spain",
-    "status": "read"
-  },
-  {
-    "article": "https://content.guardianapis.com/technology/2018/aug/19/mercedes-benz-vito-more-than-just-a-van",
-    "status": "unread"
-  },
-  {
-    "article": "https://content.guardianapis.com/music/2018/aug/19/letter-jon-hiseman-obituary",
-    "status": "unread"
-  },
-  {
-    "article": "https://content.guardianapis.com/travel/shortcuts/2018/aug/19/how-the-gap-year-became-a-gap-month-and-the-best-ways-to-spend-it",
-    "status": "unread"
-  }
-]
-
-stories = [
-  "https://content.guardianapis.com/travel/shortcuts/2018/aug/19/how-the-gap-year-became-a-gap-month-and-the-best-ways-to-spend-it",
-  "https://content.guardianapis.com/music/2018/aug/19/letter-jon-hiseman-obituary",
-]
-
-count = 0
-stories.each do |story|
-  if story == news[:article]
-    p "there's a duplicate at position:"
-    p count
-  else
-    p story
-    count += 1
-  end
-end
-
-
 # article = 
 #   { "response": 
 #     {
@@ -238,3 +158,34 @@ end
 # # get master image, looks like it's always the last element in image array
 # pic = article[:response][:content][:blocks][:main][:elements][0][:assets].pop
 # p pic[:file]
+
+arr = [{:first=>"foo"},{:second=>"bar"},{:third=>"baz"}]
+ray = [{:red=>"char"},{:blue=>"squir"},{:green=>"bulb"}]
+
+cats = [
+  {
+    "name": "weather"
+  },
+  {
+    "name": "sport"
+  },
+  {
+    "name": "technology"
+  },
+  {
+    "name": "business"
+  },
+  {
+    "name": "music"
+  },
+  {
+    "name": "travel"
+  }
+]
+
+cats.each do |cat|
+  cat[:data] = arr
+  cat[:color] = ray
+end
+
+p cats[0][:color]
