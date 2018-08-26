@@ -67,6 +67,8 @@ class Api::ArticlesController < ApplicationController
         "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
       results = response.body["response"]["results"]
       thing[:data] = results
+      thing[:currentArticleIndex] = 0
+      thing[:currentArticleVisible] = false
     end
     render json: @things
   end
@@ -90,7 +92,7 @@ class Api::ArticlesController < ApplicationController
       # link1 += key
       # article = Unirest.get(link1)
       # article_title = article.body["response"]["content"]["webTitle"]
-      # # pic = article.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"].pop
+      # pic = article.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"].pop
       # # article_image = pic["file"]
       # # article_body = article.body["response"]["content"]["blocks"]["body"][0]["bodyHtml"]
       # if article.body["response"]["content"]["tags"][0]
