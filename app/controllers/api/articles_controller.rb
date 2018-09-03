@@ -56,7 +56,35 @@ class Api::ArticlesController < ApplicationController
   end
 
 
+#####################################################
+#####################################################
+## THIS TEST METHOD WORKS, DO NOT DELETE!!!! ##
+
+
+# def test
+#   # [{sports: [...articles...], currentArticleIndex: 0}, {weather: [...articles...]}]
+#   @preferences = Category.all
+#   @things = @preferences.map{|cat| {"category"=>cat.name}}
+#   @things.each do |thing|
+#     type = thing["category"]
+#     response = Unirest.get(
+#       "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
+#     results = response.body["response"]["results"]
+#     thing[:data] = results
+#     thing[:currentArticleIndex] = 0
+#     thing[:currentArticleVisible] = false
+#   end
+#   render json: @things
+# end
+
+#####################################################
+#####################################################
+
+
 # test edits here first, then move over to the view method
+  # pics = []
+  # dex = 0
+
   def test
     # [{sports: [...articles...], currentArticleIndex: 0}, {weather: [...articles...]}]
     @preferences = Category.all
@@ -65,12 +93,27 @@ class Api::ArticlesController < ApplicationController
       type = thing["category"]
       response = Unirest.get(
         "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
-      results = response.body["response"]["results"]
-      thing[:data] = results
+      @results = response.body["response"]["results"]
+      thing[:data] = @results 
       thing[:currentArticleIndex] = 0
       thing[:currentArticleVisible] = false
     end
     render json: @things
+  end
+
+  ## given apiURL in params, make webrequest to the guardian api to retrieve image (the one that will fit of course)
+  ## for author &show-tags=contributor (in web request)
+
+  def pic 
+    response = Unirest.get(
+      "https://content.guardianapis.com/technology/2018/aug/28/driverless-taxi-debuts-in-tokyo-in-world-first-trial-ahead-of-olympics?show-blocks=all&api-key=#{ENV["API_KEY"]}")
+    @pics = response.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"]
+    @pics.each do |pic|
+      if pic["typeData"]["isMaster"] == true
+        @img = pic["file"]
+      end
+    end
+    render json: {img: @img}
   end
 
   # read individual article request from VueJS input

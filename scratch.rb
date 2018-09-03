@@ -159,33 +159,34 @@
 # pic = article[:response][:content][:blocks][:main][:elements][0][:assets].pop
 # p pic[:file]
 
-arr = [{:first=>"foo"},{:second=>"bar"},{:third=>"baz"}]
-ray = [{:red=>"char"},{:blue=>"squir"},{:green=>"bulb"}]
+# arr = [{:first=>"foo"},{:second=>"bar"},{:third=>"baz"}]
+# ray = [{:red=>"char"},{:blue=>"squir"},{:green=>"bulb"}]
 
-cats = [
-  {
-    "name": "weather"
-  },
-  {
-    "name": "sport"
-  },
-  {
-    "name": "technology"
-  },
-  {
-    "name": "business"
-  },
-  {
-    "name": "music"
-  },
-  {
-    "name": "travel"
-  }
-]
+# cats = [
+#   {
+#     "name": "weather"
+#   },
+#   {
+#     "name": "sport"
+#   },
+#   {
+#     "name": "technology"
+#   },
+#   {
+#     "name": "business"
+#   },
+#   {
+#     "name": "music"
+#   },
+#   {
+#     "name": "travel"
+#   }
+# ]
 
-cats.each do |cat|
-  cat[:data] = arr
-  cat[:color] = ray
-end
+# cats.each do |cat|
+#   cat[:data] = arr
+#   cat[:color] = ray
+# end
 
-p cats[0][:color]
+# p cats[0][:color]
+
