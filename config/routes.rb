@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get "/read" => "articles#read"
     get "/test" => "articles#test"
     get "/view" => "articles#view"
-    get "/pic" => "articles#pic"
+    get "/pic/" => "articles#pic"
 
     get "/categories" => "categories#index"
 

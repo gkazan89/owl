@@ -94,7 +94,10 @@ class Api::ArticlesController < ApplicationController
       response = Unirest.get(
         "https://content.guardianapis.com/#{type}?&api-key=#{ENV["API_KEY"]}")
       @results = response.body["response"]["results"]
-      thing[:data] = @results 
+      thing[:data] = @results.map do |result|
+        result["imageUrl"] = nil
+        result
+      end 
       thing[:currentArticleIndex] = 0
       thing[:currentArticleVisible] = false
     end
@@ -105,8 +108,9 @@ class Api::ArticlesController < ApplicationController
   ## for author &show-tags=contributor (in web request)
 
   def pic 
-    response = Unirest.get(
-      "https://content.guardianapis.com/technology/2018/aug/28/driverless-taxi-debuts-in-tokyo-in-world-first-trial-ahead-of-olympics?show-blocks=all&api-key=#{ENV["API_KEY"]}")
+    link = params["api_URL"]
+    tail = "?show-blocks=all&api-key=#{ENV["API_KEY"]}"
+    response = Unirest.get(link + tail)
     @pics = response.body["response"]["content"]["blocks"]["main"]["elements"][0]["assets"]
     @pics.each do |pic|
       if pic["typeData"]["isMaster"] == true
